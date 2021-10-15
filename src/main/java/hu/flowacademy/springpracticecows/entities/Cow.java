@@ -17,4 +17,8 @@ public class Cow {
 
     @Column(nullable = false)
     private Integer age;
+
+    @ManyToOne
+    @JoinColumn
+    private Stable stable;
 }
