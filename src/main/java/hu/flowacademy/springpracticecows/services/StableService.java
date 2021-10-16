@@ -30,7 +30,7 @@ public class StableService {
         }
     }
 
-    public Optional<Stable> findStableById(Long id){
+    public Optional<Stable> findStableById(Long id) {
         return stableRepository.findById(id);
     }
 
