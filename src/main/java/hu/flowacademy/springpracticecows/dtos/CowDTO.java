@@ -14,5 +14,5 @@ public class CowDTO {
     private Integer age;
 
     @NotEmpty
-    private Integer stableId;
+    private Long stableId;
 }
