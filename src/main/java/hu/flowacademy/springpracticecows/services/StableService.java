@@ -14,11 +14,11 @@ import java.util.Optional;
 public class StableService {
     private final StableRepository stableRepository;
 
-    public Stable addStable(StableDTO stableDTO) {
+    public void addStable(StableDTO stableDTO) {
         Stable stable = new Stable();
         stable.setAddress(stableDTO.getAddress());
         stable.setCows(new ArrayList<>());
-        return stableRepository.save(stable);
+        stableRepository.save(stable);
     }
 
     public void checkIfStableAddressAlreadyExists(StableDTO stableDTO) {
