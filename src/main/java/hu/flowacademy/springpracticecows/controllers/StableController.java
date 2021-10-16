@@ -33,4 +33,10 @@ public class StableController {
         }
         return new StableDTO(stable.get().getAddress());
     }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStable(@PathVariable Long id) {
+        stableService.deleteStableById(id);
+    }
 }
