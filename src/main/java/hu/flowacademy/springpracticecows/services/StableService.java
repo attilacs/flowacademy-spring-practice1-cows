@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -27,5 +29,13 @@ public class StableService {
                 .anyMatch(stable -> stable.getAddress().equalsIgnoreCase(stableDTO.getAddress()))) {
             throw new IllegalArgumentException("A megadott cím már létezik!");
         }
+    }
+
+    public StableDTO findStableById(Long id){
+        Optional<Stable> stable = stableRepository.findById(id);
+        if (stable.isEmpty()){
+            throw new NoSuchElementException("Nincs találat!");
+        }
+        return new StableDTO(stable.get().getAddress());
     }
 }
