@@ -1,12 +1,15 @@
 package hu.flowacademy.springpracticecows.controllers;
 
 import hu.flowacademy.springpracticecows.dtos.StableDTO;
+import hu.flowacademy.springpracticecows.entities.Stable;
 import hu.flowacademy.springpracticecows.services.StableService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/stable")
@@ -24,6 +27,10 @@ public class StableController {
 
     @GetMapping("address/{id}")
     public StableDTO getStable(@PathVariable Long id) {
-        return stableService.findStableById(id);
+        Optional<Stable> stable = stableService.findStableById(id);
+        if (stable.isEmpty()) {
+            throw new NoSuchElementException("Nincs találat!");
+        }
+        return new StableDTO(stable.get().getAddress());
     }
 }

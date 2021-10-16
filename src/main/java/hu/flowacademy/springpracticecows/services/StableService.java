@@ -31,11 +31,7 @@ public class StableService {
         }
     }
 
-    public StableDTO findStableById(Long id){
-        Optional<Stable> stable = stableRepository.findById(id);
-        if (stable.isEmpty()){
-            throw new NoSuchElementException("Nincs találat!");
-        }
-        return new StableDTO(stable.get().getAddress());
+    public Optional<Stable> findStableById(Long id){
+        return stableRepository.findById(id);
     }
 }
