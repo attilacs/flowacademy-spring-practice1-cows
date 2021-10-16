@@ -21,4 +21,9 @@ public class StableController {
         stableService.addStable(stableDTO);
         return stableDTO;
     }
+
+    @GetMapping("address/{id}")
+    public StableDTO getStable(@PathVariable Long id) {
+        return stableService.findStableById(id);
+    }
 }
