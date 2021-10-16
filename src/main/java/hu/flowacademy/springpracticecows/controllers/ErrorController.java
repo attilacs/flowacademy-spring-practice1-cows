@@ -13,9 +13,7 @@ public class ErrorController {
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel notValidArgument() {
-        ErrorModel error = new ErrorModel();
-        error.setMessage("Érvénytelen bemenet");
-        return error;
+        return new ErrorModel("Érvénytelen bemenet", null);
     }
 
     @ExceptionHandler({IllegalArgumentException.class})
