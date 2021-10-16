@@ -20,10 +20,12 @@ public class StableService {
         return stableRepository.save(stable);
     }
 
-    public boolean stableAddressAlreadyExists(StableDTO stableDTO) {
-        return stableRepository
+    public void checkIfStableAddressAlreadyExists(StableDTO stableDTO) {
+        if (stableRepository
                 .findAll()
                 .stream()
-                .anyMatch(stable -> stable.getAddress().equalsIgnoreCase(stableDTO.getAddress()));
+                .anyMatch(stable -> stable.getAddress().equalsIgnoreCase(stableDTO.getAddress()))) {
+            throw new IllegalArgumentException("A megadott cím már létezik!");
+        }
     }
 }

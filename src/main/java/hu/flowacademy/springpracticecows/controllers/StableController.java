@@ -17,9 +17,7 @@ public class StableController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StableDTO addStable(@RequestBody @Valid StableDTO stableDTO) {
-        if (stableService.stableAddressAlreadyExists(stableDTO)) {
-            throw new IllegalArgumentException("A megadott cím már létezik!");
-        }
+        stableService.checkIfStableAddressAlreadyExists(stableDTO);
         stableService.addStable(stableDTO);
         return stableDTO;
     }
