@@ -19,4 +19,11 @@ public class StableService {
         stable.setCows(new ArrayList<>());
         return stableRepository.save(stable);
     }
+
+    public boolean stableAddressAlreadyExists(StableDTO stableDTO) {
+        return stableRepository
+                .findAll()
+                .stream()
+                .anyMatch(stable -> stable.getAddress().equalsIgnoreCase(stableDTO.getAddress()));
+    }
 }
