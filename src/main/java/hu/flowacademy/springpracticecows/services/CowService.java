@@ -7,6 +7,7 @@ import hu.flowacademy.springpracticecows.repositories.CowRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -28,4 +29,11 @@ public class CowService {
         cowRepository.save(cow);
         return cowDTO;
     }
+
+    public void checkForDuplicateSid(CowDTO cowDTO) {
+        List<Cow> cows = cowRepository.findAll();
+        if (cows.stream().anyMatch(cow -> cow.getSid().equalsIgnoreCase(cowDTO.getSid()))) {
+            throw new IllegalArgumentException("Nem egyedi a sid!");
+        }
+     }
 }
