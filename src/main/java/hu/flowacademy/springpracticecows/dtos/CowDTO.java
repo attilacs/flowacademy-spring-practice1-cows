@@ -2,12 +2,14 @@ package hu.flowacademy.springpracticecows.dtos;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
 public class CowDTO {
     @Pattern(regexp = "^\\d{3}-\\d{4}-\\d{3}$")
+    @NotEmpty
     private String sid;
 
     @NotNull
