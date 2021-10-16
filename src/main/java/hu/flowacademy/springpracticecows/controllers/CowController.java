@@ -17,6 +17,7 @@ public class CowController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CowDTO addCow(@RequestBody @Valid CowDTO cowDTO) {
+        cowService.checkForDuplicateSid(cowDTO);
         return cowService.addCow(cowDTO);
     }
 }
