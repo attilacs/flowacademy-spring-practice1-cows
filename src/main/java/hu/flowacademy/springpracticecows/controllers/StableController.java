@@ -1,7 +1,6 @@
 package hu.flowacademy.springpracticecows.controllers;
 
 import hu.flowacademy.springpracticecows.dtos.StableDTO;
-import hu.flowacademy.springpracticecows.entities.Stable;
 import hu.flowacademy.springpracticecows.services.StableService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
