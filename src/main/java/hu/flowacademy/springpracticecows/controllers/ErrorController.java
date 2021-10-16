@@ -17,4 +17,12 @@ public class ErrorController {
         error.setMessage("Érvénytelen bemenet");
         return error;
     }
+
+    @ExceptionHandler({IllegalArgumentException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorModel illegalArgument(IllegalArgumentException exception) {
+        ErrorModel error = new ErrorModel();
+        error.setMessage(exception.getMessage());
+        return error;
+    }
 }
