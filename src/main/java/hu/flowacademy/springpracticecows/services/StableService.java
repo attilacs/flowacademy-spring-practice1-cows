@@ -33,4 +33,11 @@ public class StableService {
     public Optional<Stable> findStableById(Long id){
         return stableRepository.findById(id);
     }
+
+    public void deleteStableById(Long id) {
+        Optional<Stable> stable = findStableById(id);
+        if (stable.isPresent()) {
+            stableRepository.deleteById(id);
+        }
+    }
 }
