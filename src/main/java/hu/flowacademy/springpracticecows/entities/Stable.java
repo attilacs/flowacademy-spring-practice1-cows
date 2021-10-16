@@ -1,6 +1,7 @@
 package hu.flowacademy.springpracticecows.entities;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,6 +15,7 @@ public class Stable {
     private Long id;
 
     @Column(nullable = false)
+    @Getter
     private String address;
 
     @OneToMany(mappedBy = "stable", cascade = CascadeType.ALL)
