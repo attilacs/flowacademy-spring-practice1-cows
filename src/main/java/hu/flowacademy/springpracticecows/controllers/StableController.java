@@ -16,6 +16,9 @@ public class StableController {
 
     @PostMapping
     public ResponseEntity<StableDTO> addStable(@RequestBody @Valid StableDTO stableDTO) {
+        if (stableService.stableAddressAlreadyExists(stableDTO)) {
+            throw new IllegalArgumentException("A megadott cím már létezik!");
+        }
         stableService.addStable(stableDTO);
         return ResponseEntity.ok(stableDTO);
     }
