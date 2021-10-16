@@ -21,8 +21,6 @@ public class ErrorController {
     @ExceptionHandler({IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel illegalArgument(IllegalArgumentException exception) {
-        ErrorModel error = new ErrorModel();
-        error.setMessage(exception.getMessage());
-        return error;
+        return new ErrorModel(exception.getMessage(), null);
     }
 }
